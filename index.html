@@ -3,17 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,user_scalable=no">
-    <title>Unity WebGL Player | Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user_scalable=no">
+    <title>Collection</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
 </head>
-<body>
-<div id="unity-container" class="unity-desktop" style=" width:390px; height: 844px; ">
+<body class="dark">
+<div id="gameContainer" class="unity-desktop">
     <canvas id="unity-canvas"></canvas>
 </div>
-<script src="Build/CutFishWeb.loader.js"></script>
-<script>
 
+<script>
     const buildUrl = "Build";
+    const loaderUrl = buildUrl + "/CutFishWeb.loader.js";
     const config = {
         dataUrl: buildUrl + "/CutFishWeb.data.unityweb",
         frameworkUrl: buildUrl + "/CutFishWeb.framework.js.unityweb",
@@ -30,15 +32,18 @@
     const container = document.querySelector("#unity-container");
     const canvas = document.querySelector("#unity-canvas");
 
-
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-
-        // document.body.style.textAlign = "left";
+        // container.className = "unity-mobile";
     }
 
-    createUnityInstance(canvas, config);
+
+    const script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+
+        createUnityInstance(canvas, config);
+    };
+    document.body.appendChild(script);
 
 </script>
 </body>
