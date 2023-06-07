@@ -36,7 +36,8 @@
 
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
-
+        // width = screen.width;
+        // height = screen.height * (9 / 16);
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.style.position = "fixed";
@@ -45,7 +46,7 @@
     }
 
     createUnityInstance(canvas, config);
-    
+
 </script>
 </body>
 </html>
